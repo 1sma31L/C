@@ -86,10 +86,12 @@ int findMax(struct BstNode *root)
 // Find height of the binary search tree
 int findHeight(struct BstNode *root)
 {
-  int lefth = findHeight(root->left);
-  int righth = findHeight(root->right);
   if (root == NULL)
     return -1;
+
+  int lefth = findHeight(root->left);
+  int righth = findHeight(root->right);
+
   return (lefth > righth ? lefth : righth) + 1;
 }
 
