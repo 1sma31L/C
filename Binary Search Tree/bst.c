@@ -2,6 +2,9 @@
 #include <stdlib.h>
 #include <stdbool.h>
 
+/**
+ * @brief The structure of a binary search tree node
+ */
 struct BstNode
 {
   int data;
@@ -9,7 +12,11 @@ struct BstNode
   struct BstNode *left;
 };
 
-// Create a new node in the binary seach tree
+/**
+ * @brief Create a new node
+ * @param data: The value of the node
+ * @return The new node
+ */
 struct BstNode *GetNewNode(int data)
 {
   struct BstNode *newNode = (struct BstNode *)malloc(sizeof(struct BstNode));
@@ -18,7 +25,12 @@ struct BstNode *GetNewNode(int data)
   return newNode;
 };
 
-// Insert a new node in the binary seach tree
+/**
+ * @brief Insert a value in the binary search tree
+ * @param root: The root of the binary search tree
+ * @param data: The value to insert
+ * @return The root of the binary search tree
+ */
 struct BstNode *insert(struct BstNode *root, int data)
 {
   if (root == NULL)
@@ -36,7 +48,12 @@ struct BstNode *insert(struct BstNode *root, int data)
   return root;
 };
 
-// Search in the binary seach tree
+/**
+ * @brief Search a value in the binary search tree
+ * @param root: The root of the binary search tree
+ * @param data: The value to search
+ * @return True if the value is found, false otherwise
+ */
 bool search(struct BstNode *root, int data)
 {
   if (root == NULL)
@@ -49,7 +66,11 @@ bool search(struct BstNode *root, int data)
     return search(root->right, data);
 }
 
-// Find minimum value in the binary search tree
+/**
+ * @brief Find minimum value in the binary search tree
+ * @param root: The root of the binary search tree
+ * @return The minimum value
+ */
 int findMin(struct BstNode *root)
 {
   if (root == NULL)
@@ -66,7 +87,11 @@ int findMin(struct BstNode *root)
   }
 }
 
-// Find maximum value in the binary search tree
+/**
+ * @brief Find maximum value in the binary search tree
+ * @param root: The root of the binary search tree
+ * @return The maximum value
+ */
 int findMax(struct BstNode *root)
 {
   if (root == NULL)
@@ -83,7 +108,11 @@ int findMax(struct BstNode *root)
   }
 }
 
-// Find height of the binary search tree
+/**
+ * @brief Find the height of the binary search tree
+ * @param root: The root of the binary search tree
+ * @return The height of the binary search tree
+ */
 int findHeight(struct BstNode *root)
 {
   if (root == NULL)
@@ -95,6 +124,9 @@ int findHeight(struct BstNode *root)
   return (lefth > righth ? lefth : righth) + 1;
 }
 
+/**
+ * @brief Main function
+ */
 int main()
 {
   int searchVal;
