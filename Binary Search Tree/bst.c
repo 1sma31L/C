@@ -58,12 +58,18 @@ bool search(struct BstNode *root, int data)
 {
   if (root == NULL)
     return false;
-  else if (root->data == data)
-    return true;
-  else if (data <= root->data)
-    return search(root->left, data);
   else
-    return search(root->right, data);
+  {
+    if (root->data == data)
+      return true;
+    else
+    {
+      if (data <= root->data)
+        return search(root->left, data);
+      else
+        return search(root->right, data);
+    }
+  }
 }
 
 /**
@@ -125,11 +131,52 @@ int findHeight(struct BstNode *root)
 }
 
 /**
+ * @brief Inorder traversal of the binary search tree
+ * @param root: The root of the binary search tree
+ */
+void inorderTraversal(struct BstNode *root)
+{
+  if (root == NULL)
+    return;
+
+  inorderTraversal(root->left);
+  printf("%d ", root->data);
+  inorderTraversal(root->right);
+}
+
+/**
+ * @brief Preorder traversal of the binary search tree
+ * @param root: The root of the binary search tree
+ */
+void preorderTraversal(struct BstNode *root)
+{
+  if (root == NULL)
+    return;
+
+  printf("%d ", root->data);
+  preorderTraversal(root->left);
+  preorderTraversal(root->right);
+}
+
+/**
+ * @brief Postorder traversal of the binary search tree
+ * @param root: The root of the binary search tree
+ */
+void postorderTraversal(struct BstNode *root)
+{
+  if (root == NULL)
+    return;
+
+  postorderTraversal(root->left);
+  postorderTraversal(root->right);
+  printf("%d ", root->data);
+}
+
+/**
  * @brief Main function
  */
 int main()
 {
-  int searchVal;
   struct BstNode *root = NULL;
   root = insert(root, 15);
   root = insert(root, 10);
@@ -142,8 +189,22 @@ int main()
   root = insert(root, 6);
   root = insert(root, 6);
   root = insert(root, 6);
+
   printf("The max value is : %d\n", findMax(root));
   printf("The min value is : %d\n", findMin(root));
-  printf("The the height is : %d\n", findHeight(root));
+  printf("The height is : %d\n", findHeight(root));
+
+  printf("Inorder Traversal: ");
+  inorderTraversal(root);
+  printf("\n");
+
+  printf("Preorder Traversal: ");
+  preorderTraversal(root);
+  printf("\n");
+
+  printf("Postorder Traversal: ");
+  postorderTraversal(root);
+  printf("\n");
+
   return 0;
 }
